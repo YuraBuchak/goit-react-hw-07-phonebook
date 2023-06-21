@@ -1,10 +1,10 @@
 import css from '../Phonebook.module.css';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from 'redux/contactsSlice/contactsSlice';
-import { stateContacts } from 'redux/selectors';
+import { selectContacts } from 'redux/selectors';
+import { addContactThunk } from 'redux/thunk/contactThunk';
 
 export const AddContactForm = () => {
-  const contacts = useSelector(stateContacts);
+  const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
   const handleSubmitForm = event => {
@@ -12,16 +12,16 @@ export const AddContactForm = () => {
     const name = event.target.elements.name.value;
     const number = event.target.elements.number.value;
     const normalizeName = name.toLowerCase().trim();
-    const isContact = contacts
-      .map(contact => contact.name.toLowerCase().trim())
-      .includes(normalizeName);
+    const isContact = contacts.find(
+      contact => contact.name.toLowerCase().trim() === normalizeName
+    );
 
     if (isContact) {
       alert(`${name} was added earlyer`);
       return;
     }
 
-    dispatch(addContact(name, number));
+    dispatch(addContactThunk({ name, number }));
     event.target.reset();
   };
 

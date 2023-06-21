@@ -1,10 +1,10 @@
 import css from '../Phonebook.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from 'redux/filterSlice/filterSlice';
-import { stateFilter } from 'redux/selectors';
+import { selectFilter } from 'redux/selectors';
 
 export const Filter = () => {
-  const filter = useSelector(stateFilter);
+  const filter = useSelector(selectFilter);
   const dispatch = useDispatch();
 
   const handleFilter = event => {
