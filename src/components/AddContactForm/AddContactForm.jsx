@@ -1,7 +1,7 @@
 import css from '../Phonebook.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
-import { addContactThunk } from 'redux/thunk/contactThunk';
+import { addContactThunk, getContactsThunk } from 'redux/thunk/contactThunk';
 
 export const AddContactForm = () => {
   const contacts = useSelector(selectContacts);
@@ -22,6 +22,7 @@ export const AddContactForm = () => {
     }
 
     dispatch(addContactThunk({ name, number }));
+    // dispatch(getContactsThunk());
     event.target.reset();
   };
 

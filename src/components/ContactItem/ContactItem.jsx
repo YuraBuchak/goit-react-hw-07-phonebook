@@ -1,7 +1,7 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import css from '../Phonebook.module.css';
 import { useDispatch } from 'react-redux';
-import { deleteContact } from 'redux/contactsSlice/contactsSlice';
+import { deleteContactThunk } from 'redux/thunk/contactThunk';
 
 export const ContactItem = ({ contact }) => {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ export const ContactItem = ({ contact }) => {
       {name}: <span className={css.number}>{number}</span>
       <button
         className={css.deleteBtn}
-        onClick={() => dispatch(deleteContact(id))}
+        onClick={() => dispatch(deleteContactThunk(id))}
       >
         X
       </button>
@@ -20,10 +20,10 @@ export const ContactItem = ({ contact }) => {
   );
 };
 
-ContactItem.propTypes = {
-  contact: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    number: PropTypes.string.isRequired,
-    id: PropTypes.string.isRequired,
-  }).isRequired,
-};
+// ContactItem.propTypes = {
+//   contact: PropTypes.shape({
+//     name: PropTypes.string.isRequired,
+//     number: PropTypes.string.isRequired,
+//     id: PropTypes.string.isRequired,
+//   }).isRequired,
+// };
