@@ -2,6 +2,7 @@ import css from '../Phonebook.module.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
 import { addContactThunk, getContactsThunk } from 'redux/thunk/contactThunk';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 export const AddContactForm = () => {
   const contacts = useSelector(selectContacts);
@@ -23,6 +24,7 @@ export const AddContactForm = () => {
 
     await dispatch(addContactThunk({ name, number }));
     await dispatch(getContactsThunk());
+    Notify.success(`Contact ${name} added`);
     event.target.reset();
   };
 
