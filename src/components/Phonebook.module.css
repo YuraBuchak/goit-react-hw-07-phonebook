@@ -7,6 +7,8 @@
   margin-bottom: 30px;
 
   border: 5px solid #8a2be2;
+
+  border: 5px solid blueviolet;
   border-radius: 20px;
   background-color: antiquewhite;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -144,13 +146,15 @@
   border-radius: 50%;
 
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-  transition: border-color 250ms ease-in, color 250ms ease-in;
+  transition: color, background-color, border-color 250ms ease-in,
+    color 250ms ease-in;
 }
 
 .deleteBtn:hover,
 .deleteBtn:focus {
-  border-color: red;
-  color: red;
+  background-color: antiquewhite;
+  border-color: blueviolet;
+  color: blueviolet;
 }
 
 .number {
