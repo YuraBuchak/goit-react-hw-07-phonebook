@@ -7,7 +7,7 @@ export const AddContactForm = () => {
   const contacts = useSelector(selectContacts);
   const dispatch = useDispatch();
 
-  const handleSubmitForm = event => {
+  const handleSubmitForm = async event => {
     event.preventDefault();
     const name = event.target.elements.name.value;
     const number = event.target.elements.number.value;
@@ -21,8 +21,8 @@ export const AddContactForm = () => {
       return;
     }
 
-    dispatch(addContactThunk({ name, number }));
-    // dispatch(getContactsThunk());
+    await dispatch(addContactThunk({ name, number }));
+    await dispatch(getContactsThunk());
     event.target.reset();
   };
 

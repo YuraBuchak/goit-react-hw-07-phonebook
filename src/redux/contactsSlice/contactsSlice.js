@@ -19,14 +19,14 @@ export const handlePending = state => {
 };
 
 export const handleFulfilledContacts = (state, { payload }) => {
-  state.isLoading = false;
   state.items = payload;
   state.error = '';
+  state.isLoading = false;
 };
 
 export const handleRejected = (state, { payload }) => {
-  state.isLoading = false;
   state.error = payload;
+  state.isLoading = false;
 };
 
 export const contactsSlice = createSlice({
@@ -35,12 +35,8 @@ export const contactsSlice = createSlice({
   extraReducers: builder => {
     builder
       .addCase(getContactsThunk.fulfilled, handleFulfilledContacts)
-      .addMatcher(action => {
-        action.type.endsWith('/pending');
-      }, handlePending)
-      .addMatcher(action => {
-        action.type.endsWith('/rejected');
-      }, handleRejected);
+      .addMatcher(action => action.type.endsWith('/pending'), handlePending)
+      .addMatcher(action => action.type.endsWith('/rejected'), handleRejected);
   },
 });
 
