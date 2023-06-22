@@ -6,7 +6,7 @@ import { deleteContactThunk, getContactsThunk } from 'redux/thunk/contactThunk';
 
 export const ContactItem = ({ contact }) => {
   const dispatch = useDispatch();
-  const { name, number, id } = contact;
+  const { name, number, id, photo } = contact;
 
   const deleteUpdateContacts = async () => {
     Confirm.show(
@@ -28,7 +28,12 @@ export const ContactItem = ({ contact }) => {
 
   return (
     <li className={css.listItem}>
-      {name}: <span className={css.number}>{number}</span>
+      <img src={photo} alt="avatar" className={css.avatar}></img>
+      <div className={css.contactWrapper}>
+        <span className={css.contactName}>{name}:</span>
+        <span className={css.number}>{number}</span>
+      </div>
+
       <button
         className={css.deleteBtn}
         onClick={() => dispatch(deleteUpdateContacts)}
