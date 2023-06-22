@@ -11,19 +11,19 @@ export const App = () => {
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
   return (
-    <div className={css.container}>
-      <h1 className={css.title}>Phonebook</h1>
+    <>
+      <div className={css.spiner}>
+        {isLoading && !error && <ClockLoader color="#8a2be2" size={60} />}
+      </div>
 
-      <AddContactForm />
-      <h2 className={css.titleFilter}>
-        {isLoading && !error ? (
-          <ClockLoader className="spiner" color="#8a2be2" size={40} />
-        ) : (
-          ' Contacts'
-        )}
-      </h2>
-      <Filter />
-      <ContactList />
-    </div>
+      <div className={css.container}>
+        <h1 className={css.title}>Phonebook</h1>
+
+        <AddContactForm />
+        <h2 className={css.titleFilter}>Contacts</h2>
+        <Filter />
+        <ContactList />
+      </div>
+    </>
   );
 };
