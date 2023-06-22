@@ -28,7 +28,10 @@ export const ContactItem = ({ contact }) => {
 
   return (
     <li className={css.listItem}>
-      <img src={photo} alt="avatar" className={css.avatar}></img>
+      <div className={css.avatarWrapper}>
+        <img src={photo} alt="avatar" className={css.avatar} />
+      </div>
+
       <div className={css.contactWrapper}>
         <span className={css.contactName}>{name}:</span>
         <span className={css.number}>{number}</span>
