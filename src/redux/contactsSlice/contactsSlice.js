@@ -1,6 +1,6 @@
 import { getContactsThunk } from 'redux/thunk/contactThunk';
 
-const { createSlice, nanoid } = require('@reduxjs/toolkit');
+const { createSlice } = require('@reduxjs/toolkit');
 
 export const contactsInitialState = {
   items: [

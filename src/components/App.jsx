@@ -4,7 +4,7 @@ import { Filter } from './Filter/Filter';
 import css from './Phonebook.module.css';
 
 import { selectError, selectIsLoading } from 'redux/selectors';
-import { HashLoader, ClockLoader } from 'react-spinners';
+import { ClockLoader } from 'react-spinners';
 import { useSelector } from 'react-redux';
 
 export const App = () => {
